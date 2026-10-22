@@ -62,6 +62,10 @@ echo "sdk.dir=/path/to/Android/sdk" > local.properties
 
 生成的 APK 在 `app/build/outputs/apk/debug/app-debug.apk`，用 `adb install -r` 安装即可。
 
+### 从 Releases 下载
+
+每次打版本 tag，GitHub Actions 会自动构建签名 APK 并发布到 [Releases](../../releases)。发布流程见 [docs/RELEASING.md](docs/RELEASING.md)。
+
 ### 权限
 
 首次启动会申请：

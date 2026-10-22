@@ -1,8 +1,21 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
 }
+
+// 发布签名配置：优先读 keystore.properties（本地，已 gitignore），其次读环境变量（CI）。
+// 两者都没有时回退到 debug 签名，保证本地 assembleRelease 仍能跑通。
+val keystorePropsFile = rootProject.file("keystore.properties")
+val keystoreProps = Properties().apply {
+    if (keystorePropsFile.exists()) keystorePropsFile.inputStream().use { load(it) }
+}
+fun signingValue(propKey: String, envKey: String): String? =
+    (keystoreProps.getProperty(propKey) ?: System.getenv(envKey))?.takeIf { it.isNotBlank() }
+
+val hasReleaseSigning = signingValue("storeFile", "KEYSTORE_FILE") != null
 
 android {
     namespace = "com.airpodsadapt"
@@ -16,11 +29,26 @@ android {
         versionName = "0.1.0"
     }
 
+    signingConfigs {
+        create("release") {
+            if (hasReleaseSigning) {
+                storeFile = file(signingValue("storeFile", "KEYSTORE_FILE")!!)
+                storePassword = signingValue("storePassword", "KEYSTORE_PASSWORD")
+                keyAlias = signingValue("keyAlias", "KEY_ALIAS")
+                keyPassword = signingValue("keyPassword", "KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
-            // 自用：release 也用 debug 签名，便于直接安装
-            signingConfig = signingConfigs.getByName("debug")
+            // 有发布密钥就用正式签名，否则回退 debug 签名（仅便于本地/无密钥构建）
+            signingConfig = if (hasReleaseSigning) {
+                signingConfigs.getByName("release")
+            } else {
+                signingConfigs.getByName("debug")
+            }
         }
     }
 

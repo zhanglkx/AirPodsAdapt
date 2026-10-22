@@ -1,0 +1,27 @@
+name: Build
+
+# 每次推送 / PR 构建 debug 包，尽早发现编译或 lint 问题。
+on:
+  push:
+    branches: ["**"]
+    tags-ignore: ["**"]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: android-actions/setup-android@v3
+      - run: chmod +x ./gradlew
+      - name: Assemble & lint
+        run: ./gradlew assembleDebug lintDebug --no-daemon
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
