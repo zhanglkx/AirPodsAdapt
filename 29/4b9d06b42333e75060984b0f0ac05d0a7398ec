@@ -1,0 +1,27 @@
+docs/RELEASING.md
+  s_60f7c686df30f8::t_5a2082af6d972e 1-72
+.github/workflows/build.yml
+  s_60f7c686df30f8::t_23c5ea1f64b8fe 1-27
+README.md
+  s_60f7c686df30f8::t_ccce8b49379d1f 65-68
+app/build.gradle.kts
+  s_60f7c686df30f8::t_9fd5d4a76b30ab 1-2,9-19,32-42,46-51
+.github/workflows/release.yml
+  s_60f7c686df30f8::t_32229266e858e6 1-65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.51-trip",
+  "base_commit_sha": "294b9d06b42333e75060984b0f0ac05d0a7398ec",
+  "prompts": {},
+  "sessions": {
+    "s_60f7c686df30f8": {
+      "agent_id": {
+        "tool": "kiro-cli",
+        "id": "dead011f-6ac4-4642-abd3-0eec9ec0da24",
+        "model": "claude-opus-4.8"
+      },
+      "human_author": "likezhang <likezhang@trip.com>"
+    }
+  }
+}
