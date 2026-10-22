@@ -1,0 +1,23 @@
+# Gradle / Android
+*.iml
+.gradle/
+.kotlin/
+/local.properties
+/.idea/
+/build/
+/app/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+
+# Signing — never commit keystores
+*.jks
+*.keystore
+keystore.properties
+
+# APK / build outputs
+*.apk
+*.aab
+
+# OS
+.DS_Store

@@ -1,0 +1,16 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- 24×24 图形放大到 66dp 安全区并居中 -->
+    <group
+        android:scaleX="2.5"
+        android:scaleY="2.5"
+        android:translateX="24"
+        android:translateY="24">
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M7.5,3.5a3.5,3.5 0,1 1,0 7a3.5,3.5 0,1 1,0 -7z M8.5,7h2v12a1,1 0,0 1,-2 0z M16.5,3.5a3.5,3.5 0,1 1,0 7a3.5,3.5 0,1 1,0 -7z M13.5,7h2v12a1,1 0,0 1,-2 0z" />
+    </group>
+</vector>
