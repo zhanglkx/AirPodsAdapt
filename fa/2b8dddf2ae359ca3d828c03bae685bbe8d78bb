@@ -1,0 +1,57 @@
+app/src/main/java/com/airpodsadapt/service/AirPodsService.kt
+  s_60f7c686df30f8::t_032dfd517ace6c 487,492
+  s_efd9f0379b5c53::t_1cda3fce2faab3 81-84,89,96,117-119,137,203
+  s_efd9f0379b5c53::t_0227be29211bfb 266-270,272-275,278-284,292-305,329-330,332,335,339,343-345,378-379
+  s_efd9f0379b5c53::t_0a893b6ecbbfea 601,605
+  s_efd9f0379b5c53::t_62e4c61df1e5e2 142-144
+  s_efd9f0379b5c53::t_6ce315bf8e623d 389-390,598-599,604
+  s_efd9f0379b5c53::t_dad1ba7629407e 35,39,46,48,53,409,411,417-422,424,426-430,434-438,440,444-448,450-454,464-469,485-486,488-491,532-533,595-597,600,602-603,612-616
+  s_60f7c686df30f8::t_03f269bd378b4d 410,412-416
+  s_efd9f0379b5c53::t_c3f9f0143eb404 423,425,449
+  s_60f7c686df30f8::t_8d2c8d6071ddf8 431-433,439,441-443,455-458
+app/src/main/java/com/airpodsadapt/core/Models.kt
+  s_efd9f0379b5c53::t_404d195f4a373e 17-18,20-21,24-25
+  s_efd9f0379b5c53::t_d9b13aa253e2ec 19
+CHANGELOG.md
+  s_efd9f0379b5c53::t_fcc2d826f9bcd9 8-9
+  s_efd9f0379b5c53::t_98afc88cf02ad7 7,10-12
+app/src/main/java/com/airpodsadapt/core/CaseBatteryCache.kt
+  s_efd9f0379b5c53::t_bc4aaaadcc1282 1-45
+docs/how-it-works.md
+  s_efd9f0379b5c53::t_9dee99a0b31a2c 73-75
+  s_efd9f0379b5c53::t_c6002269092e05 92
+  s_efd9f0379b5c53::t_de534d3b2caf0a 64-72,76,89-91
+app/src/main/java/com/airpodsadapt/aap/AapConnection.kt
+  s_efd9f0379b5c53::t_c6371f9387eb8d 9,17,46-47,87,115-116,132,140,143-149,153-154,188
+  s_60f7c686df30f8::t_48ba1c846e7ca2 42-43
+  s_efd9f0379b5c53::t_5af9a42a9b5f78 38-41,75,183-187
+  s_60f7c686df30f8::t_8e08c5586b061b 113
+  s_efd9f0379b5c53::t_f730e84c8d3d67 80-86,90,97,141-142,150-152,189-190
+app/src/main/java/com/airpodsadapt/ui/HomeSections.kt
+  s_efd9f0379b5c53::t_9d49b40872be44 13,100-104
+  s_efd9f0379b5c53::t_ff42358d993f63 77,90-92
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.51-trip",
+  "base_commit_sha": "fa2b8dddf2ae359ca3d828c03bae685bbe8d78bb",
+  "prompts": {},
+  "sessions": {
+    "s_60f7c686df30f8": {
+      "agent_id": {
+        "tool": "kiro-cli",
+        "id": "dead011f-6ac4-4642-abd3-0eec9ec0da24",
+        "model": "claude-opus-4.8"
+      },
+      "human_author": "likezhang <likezhang@trip.com>"
+    },
+    "s_efd9f0379b5c53": {
+      "agent_id": {
+        "tool": "kiro-cli",
+        "id": "8baa51b8-19a2-4688-9706-d851acfba827",
+        "model": "claude-opus-5.5"
+      },
+      "human_author": "likezhang <likezhang@trip.com>"
+    }
+  }
+}
