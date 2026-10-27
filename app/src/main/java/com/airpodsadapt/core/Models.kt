@@ -14,8 +14,15 @@ data class Battery(
     val right: BatteryLevel? = null,
     val case: BatteryLevel? = null,
     val source: Source = Source.NONE,
+    /**
+     * 非 0 表示 [case] 不是实时读数，而是该时刻（System.currentTimeMillis）最后一次读到的值。
+     * 耳机只有在至少一只放在盒内时才上报盒子电量，戴上后只能显示上次读数。
+     */
+    val caseSavedAt: Long = 0,
 ) {
     enum class Source { NONE, BLE, AAP }
+
+    val caseIsLastKnown: Boolean get() = case != null && caseSavedAt != 0L
 }
 
 /** 单只耳机的位置。 */

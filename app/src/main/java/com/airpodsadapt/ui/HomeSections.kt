@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.PowerManager
 import android.provider.Settings
+import android.text.format.DateUtils
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -73,7 +74,7 @@ fun StatusCard(state: AirPodsState) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
             BatteryGauge("左耳", state.battery.left)
             BatteryGauge("右耳", state.battery.right)
-            BatteryGauge("充电盒", state.battery.case)
+            BatteryGauge(if (state.battery.caseIsLastKnown) "充电盒（上次）" else "充电盒", state.battery.case)
         }
 
         val ear = when {
@@ -86,11 +87,21 @@ fun StatusCard(state: AirPodsState) {
         val lid = state.lidOpen?.let { if (it) "充电盒：已打开" else "充电盒：已合上" }
         listOfNotNull(ear, lid).takeIf { it.isNotEmpty() }?.let { Hint(it.joinToString(" · ")) }
         if (state.battery.source == Battery.Source.BLE) Hint("电量来自蓝牙广播，精度为 10%")
+        if (state.battery.caseIsLastKnown) {
+            Hint("充电盒电量为${lastSeenText(state.battery.caseSavedAt)}的读数，耳机放回盒中后更新")
+        }
 
         if (state.audioConnected && !state.connected && state.link != Link.CONNECTING) {
             Button(onClick = AirPodsHub::reconnect, modifier = Modifier.fillMaxWidth()) { Text("重新建立控制通道") }
         }
     }
+}
+
+/** “刚刚” / “5分钟前” / “3小时前”……使用系统本地化的相对时间。 */
+private fun lastSeenText(at: Long): String {
+    val now = System.currentTimeMillis()
+    return if (now - at < DateUtils.MINUTE_IN_MILLIS) "刚刚" else
+        DateUtils.getRelativeTimeSpanString(at, now, DateUtils.MINUTE_IN_MILLIS).toString()
 }
 
 private fun statusText(s: AirPodsState): String = when {
